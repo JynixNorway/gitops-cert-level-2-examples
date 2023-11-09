@@ -1,21 +1,17 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  namespace: example06
-  generateName: grafana-notify-
-  labels:
-    codefresh.io/cert: grafana-job  
+  namespace: example04
+  generateName: dummy-sync-fail-
   annotations:
     argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/sync-wave: "-10"
 spec:
   template:
     spec:
       containers:
-      - name: dummy-run
+      - name: dummy-sync-fail
         image: alpine
         command:
-          - "sleep"
-          - "10"
+          - "false"
       restartPolicy: Never
   backoffLimit: 2    
